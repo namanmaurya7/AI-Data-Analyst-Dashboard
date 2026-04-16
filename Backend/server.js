@@ -1,5 +1,7 @@
 console.log("SERVER FILE LOADED");
 console.log("SERVER RESTARTED WITH ANALYZE ROUTE");
+const cors = require("cors");
+
 require("dotenv").config();
 
 const axios = require("axios");
@@ -10,7 +12,7 @@ let dataset = [];
 //const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const express = require("express");
-const cors = require("cors");
+
 const multer = require("multer");
 const csv = require("csv-parser");
 const fs = require("fs");
@@ -24,8 +26,9 @@ const {
   generateInsights,
 } = require("./utils/dataProcessor.js");
 
-app.use(cors());
+
 app.use(express.json());
+app.use(cors());
 
 // Storage config
 const upload = multer({ dest: "uploads/" });
@@ -161,5 +164,5 @@ app.get("/", (req, res) => {
 const PORT = 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
