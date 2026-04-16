@@ -32,7 +32,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("http://localhost:5000/upload", formData);
+      const res = await axios.post("https://ai-dashboard-backend-9sms.onrender.com/upload", formData);
       setData(res.data);
     } catch (err) {
       console.error(err);
@@ -54,7 +54,7 @@ function App() {
     setLoading(true); // ✅ start loading
 
     try {
-      const res = await axios.post("http://localhost:5000/ai-query", {
+      const res = await axios.post("https://ai-dashboard-backend-9sms.onrender.com/ai-query", {
         query,
       });
 
@@ -108,7 +108,7 @@ function App() {
     <div className="flex gap-4 mb-6">
       <button
         onClick={async () => {
-          const res = await axios.post("http://localhost:5000/analyze", {
+          const res = await axios.post("https://ai-dashboard-backend-9sms.onrender.com/analyze", {
             type: "group",
             groupColumn: "product",
             valueColumn: "revenue",
@@ -131,7 +131,7 @@ function App() {
 
       <button
         onClick={async () => {
-          const res = await axios.post("http://localhost:5000/analyze", {
+          const res = await axios.post("https://ai-dashboard-backend-9sms.onrender.com/analyze", {
             type: "average",
             column: "revenue",
           });
